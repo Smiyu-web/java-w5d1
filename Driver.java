@@ -2,8 +2,11 @@ package ca.java.exercise;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Driver {
+	
+	public static Scanner input = new Scanner(System.in);
 	
 	public static void printHourlyEmployee(ArrayList<HourlyEmployee> hourly) {
 		System.out.println("Hourly employee's lists : ");
@@ -19,9 +22,20 @@ public class Driver {
 		}
 	}
 	
-//	public static void findEmployee(ArrayList<HourlyEmployee> hourly, ArrayList<SalesEmployee> sales) {
-//		
-//	}
+	public static String findEmployee(ArrayList<Employee> employees) {
+		System.out.print("Enter employee's last name : ");
+		String enteredName = input.next();
+		
+		if (!enteredName.isEmpty() && !enteredName.equalsIgnoreCase(null)) {
+			for (Employee e : employees) {
+				if (e.getLastName().equalsIgnoreCase(enteredName)) {
+					return e.toString();
+				} 
+			}
+		} 
+		
+		return "Couldn't find the employee";	
+	}
 
 	public static void main(String[] args) {
 		ArrayList<HourlyEmployee> hourlyEmployees = new ArrayList<HourlyEmployee>();
@@ -32,7 +46,6 @@ public class Driver {
 		hourlyEmployees.add(h2);
 		
 		printHourlyEmployee(hourlyEmployees);
-//		System.out.println(hourlyEmployees.toString());
 		
 		ArrayList<SalesEmployee> salesEmployees = new ArrayList<SalesEmployee>();
 		SalesEmployee s1 = new SalesEmployee("Jenny", "Smith", "jenny@telus.net", LocalDate.of(2012, 7, 1), "77-444-4567", 20, 525.0);
@@ -41,9 +54,15 @@ public class Driver {
 		salesEmployees.add(s1);
 		salesEmployees.add(s2);
 		
-		
 		printSalesEmployees(salesEmployees);
-	
+		
+		ArrayList<Employee> employees = new ArrayList<Employee>();
+		employees.add(h1);
+		employees.add(h2);
+		employees.add(s1);
+		employees.add(s2);
+
+		System.out.println(findEmployee(employees));
 		
 	}
 

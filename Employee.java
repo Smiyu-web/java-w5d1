@@ -31,7 +31,7 @@ public abstract class Employee {
 	}
 	
 	public void setFirstName(String firstName) {
-		if (!firstName.isEmpty() || !firstName.equalsIgnoreCase(null)) {
+		if (!firstName.isEmpty() && !firstName.equalsIgnoreCase(null)) {
 			this.firstName = firstName;
 		} else {
 			this.firstName = "Unknown";
@@ -43,7 +43,7 @@ public abstract class Employee {
 	}
 	
 	public void setLastName(String lastName) {
-		if (!lastName.isEmpty() || !lastName.equalsIgnoreCase(null)) {
+		if (!lastName.isEmpty() && !lastName.equalsIgnoreCase(null)) {
 			this.lastName = lastName;
 		} else {
 			this.lastName = "Unknown";
